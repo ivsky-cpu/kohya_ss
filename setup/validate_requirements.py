@@ -155,51 +155,7 @@ def log_xpu_info(torch, ipex):
         )
 
 def main():
-    # Check the repository version to ensure compatibility
-    log.debug("Checking repository version...")
-    setup_common.check_repo_version()
-    # Check if the current path contains spaces, which are not supported
-    log.debug("Checking if the current path contains spaces...")
-    check_path_with_space()
-
-    # Parse command line arguments
-    log.debug("Parsing command line arguments...")
-    parser = argparse.ArgumentParser(
-        description="Validate that requirements are satisfied."
-    )
-    parser.add_argument(
-        "-r", "--requirements", type=str, help="Path to the requirements file."
-    )
-    parser.add_argument("--debug", action="store_true", help="Debug on")
-    args = parser.parse_args()
-
-    # Update git submodules if necessary
-    log.debug("Updating git submodules...")
-    setup_common.update_submodule()
-
-    # Check if PyTorch is installed and log relevant information
-    log.debug("Checking if PyTorch is installed...")
-    torch_ver = check_torch()
-
-    # Check if the Python version is compatible
-    log.debug("Checking Python version...")
-    if not setup_common.check_python_version():
-        sys.exit(1)
-
-    # Install required packages from the specified requirements file
-    requirements_file = args.requirements or "requirements_pytorch_windows.txt"
-    log.debug(f"Installing requirements from: {requirements_file}")
-    setup_common.install_requirements_inbulk(
-        requirements_file, show_stdout=True, 
-        # optional_parm="--index-url https://download.pytorch.org/whl/cu124"
-    )
-    
-    # setup_common.install_requirements(requirements_file, check_no_verify_flag=True)
-    
-    # log.debug("Installing additional requirements from: requirements_windows.txt")
-    # setup_common.install_requirements(
-    #     "requirements_windows.txt", check_no_verify_flag=True
-    # )
+    print("oooo")
 
 if __name__ == "__main__":
     log.debug("Starting main function...")
